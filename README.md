@@ -1,8 +1,23 @@
-TableEditor
+Umbraco 7 TableEditor
 ===========
+Table editor is a simple table... editor... :)
 
+![TableEditor](https://pbs.twimg.com/media/BouPOV3IYAAHghE.png)
 
-== Sample Template
+###Install
+Presently it's a manual install:
+
+ - Creat a `~/App_Plugins/TableEditor` folder.
+ - Drop the `/css`, `/js`, `/views` and drop them into your `~/App_Plugins/TableEditor` folder.
+ - Drop the dll in `/bin`
+ - Touch web.config
+ - Configure in `Developer->Datatypes`
+
+###Sample Partial Call
+@Html.Partial("~/pathtopartial/partialname.cshtml", Model.Content.GetPropertyValue<TableEditorModel>("propname"))
+
+###Sample Partial Template
+You can use the sample template below or customize your own.
 
     @inherits Umbraco.Web.Mvc.UmbracoViewPage<TableEditorModel>
     @{
