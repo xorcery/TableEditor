@@ -2,13 +2,20 @@ Umbraco 7 TableEditor
 ===========
 Table editor is a simple table... editor... :)
 
+Features:
+- Use your own markup.
+- Editor adds/removes rows/cols.
+- Set limit on rows/cols.
+- Add table, row and column styles.
+- Denote a header, footer row (first or last).
+
 ![TableEditor](https://pbs.twimg.com/media/BouPOV3IYAAHghE.png)
 
 ###Install
 Presently it's a manual install:
 
- - Creat a `~/App_Plugins/TableEditor` folder.
- - Drop the `/css`, `/js`, `/views` and drop them into your `~/App_Plugins/TableEditor` folder.
+ - Create a `~/App_Plugins/TableEditor` folder.
+ - Drop the `/css`, `/js`, `/views` and `package.manifest` into your `~/App_Plugins/TableEditor` folder.
  - Drop the dll in `/bin`
  - Touch web.config
  - Configure in `Developer->Datatypes`
