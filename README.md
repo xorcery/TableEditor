@@ -21,7 +21,7 @@ Presently it's a manual install:
  - Configure in `Developer->Datatypes`
 
 ###Sample Partial Call
-@Html.Partial("~/pathtopartial/partialname.cshtml", Model.Content.GetPropertyValue<TableEditorModel>("propname"))
+`@Html.Partial("~/pathtopartial/partialname.cshtml", Model.Content.GetPropertyValue<TableEditorModel>("propname"))`
 
 ###Sample Partial Template
 You can use the sample template below or customize your own.
