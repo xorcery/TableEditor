@@ -12,6 +12,7 @@
 	border: none;
 	line-height: normal;
 	padding: 0;
+    vertical-align: middle;
 }
 
 .table-editor td textarea {
