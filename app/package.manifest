@@ -38,6 +38,12 @@
             "key": "columnStyles",
             "label": "Column Styles",
             "view": "textarea"
+          },
+		  {
+            "description": "Use textarea instead of inputs.",
+            "key": "multiLineInputs",
+            "label": "Use Multi-line Inputs?",
+            "view": "boolean"
           }
         ]
       }

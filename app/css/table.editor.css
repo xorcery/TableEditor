@@ -14,6 +14,11 @@
 	padding: 0;
 }
 
+.table-editor td textarea {
+    width: 75px;
+    height: 50px;
+}
+
 .table-editor td:first-child {
     text-align: center;
     width: 10px;
@@ -24,6 +29,7 @@
 	border: none;
 	line-height: normal;
 	padding: 0;
+    text-align: center;
 }
 
 .table-editor th:first-child {
@@ -69,7 +75,6 @@
 .table-editor .col-highlighted {
     background-color: #ddd;
 }
-
 
 .table-editor label {
     display: block;

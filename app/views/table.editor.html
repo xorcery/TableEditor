@@ -20,7 +20,8 @@
             <tr ng-repeat="row in model.value.cells" table-editor-row-control>
                 <td>{{$index + 1}}</td>
                 <td ng-repeat="column in row" table-editor-column-control>
-                    <input type="text" ng-model="column.value" />
+                    <textarea ng-model="column.value" ng-if="model.config.multiLineInputs"></textarea>
+                    <input type="text" ng-model="column.value" ng-if="!model.config.multiLineInputs"/>
                 </td>
                 <td class="row-buttons-td">
                     <div class="row-buttons">
