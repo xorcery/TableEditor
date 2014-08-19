@@ -14,8 +14,8 @@ app/less/*.css
 dist/
 node_modules/
 tmp/
-pkg/*.nupkg
-pkg/*.zip
+pkg/*
+
 
 [Dd]ebug/
 [Bb]uild/
