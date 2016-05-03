@@ -4,6 +4,12 @@
 
 .table-editor table {
     border-collapse: separate;
+    
+    /* sortable placeholder */
+    .sortable-placeholder {
+        background-color: #f5f5f5;
+        opacity: 0.5;
+    }
 }
 
 .table-editor td {
@@ -52,6 +58,12 @@
 .table-editor .row-buttons {
     width: 50px;
     display: none;
+    
+    .icon {
+        cursor: pointer;
+        
+        &.handle { cursor: move; }
+    }
 }
 
 .table-editor td.row-buttons-td {
@@ -62,7 +74,7 @@
 
 .table-editor .row-style {
     width: 100px;
-    visibility: hidden;
+    display: none;
 }
 
 .table-editor .row-style select {
@@ -82,7 +94,7 @@
 }
 
 .table-editor input[type=text] {
-    padding: 2px;
+    margin: 2px;
     width: 90px;
 }
 
