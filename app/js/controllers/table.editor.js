@@ -145,7 +145,8 @@
             ui.placeholder.html('<td colspan="' + cellCount + '"></td>').height(ui.item.height());
         },
         update: function (ev, ui) {
-
+            //highlight the item when the position is changed
+            $(ui.item).effect("highlight", { color: "#2e8aea" }, 500);
         },
         stop: function (ev, ui) {
 
@@ -209,14 +210,14 @@
             element.addClass("row-highlighted");
 			
 			if($rowStyle.find('option').length > 1) {
-				$rowStyle.css('display', 'table-cell');
+				$rowStyle.css('visibility', 'visible');
 			}
         });
 
         element.bind('mouseout', function () {
             if (selectActive == false) {
                 $rowControls.hide();
-                $rowStyle.css('display', 'none');
+                $rowStyle.css('visibility', 'hidden');
 				//$rowStyle.find('select').hide();
                 element.removeClass("row-highlighted");
             }

@@ -30,7 +30,7 @@
                         <i class="icon icon-navigation handle" ng-show="canSort()"></i>            
                     </div>
                 </td>
-                <td class="row-style">
+                <td class="row-style" ng-show="model.config.rowStyles.length > 1">
                     <select ng-model="model.value.rowStylesSelected[$index]" ng-options="style.value as style.label for style in model.config.rowStyles"></select>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
             Use last row as footer?
         </label>
         <label>
-            <input type="button" value="Clear Table" ng-click="clearTable()"/>
+            <input type="button" class="btn btn-default" value="Clear Table" ng-click="clearTable()"/>
         </label>
     </div>
 </div>

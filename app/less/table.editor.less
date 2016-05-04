@@ -17,28 +17,19 @@
     width: 102px;
 	border: none;
 	line-height: normal;
-	padding: 0;
+	padding: 2px;
     vertical-align: middle;
-}
-
-.table-editor td textarea {
-    width: 75px;
-    height: 50px;
-}
-
-.table-editor td:first-child {
-    text-align: center;
-    width: 10px;
 }
 
 .table-editor th {
     width: 102px;
 	border: none;
 	line-height: normal;
-	padding: 0;
+	padding: 2px;
     text-align: center;
 }
 
+.table-editor td:first-child,
 .table-editor th:first-child {
     text-align: center;
     width: 10px;
@@ -53,6 +44,10 @@
     margin-right: 15px;
     height: 20px;
 	text-align: center;
+    
+    .icon {
+        cursor: pointer;
+    }
 }
 
 .table-editor .row-buttons {
@@ -74,7 +69,7 @@
 
 .table-editor .row-style {
     width: 100px;
-    display: none;
+    visibility: hidden;
 }
 
 .table-editor .row-style select {
@@ -93,9 +88,14 @@
     display: block;
 }
 
-.table-editor input[type=text] {
-    margin: 2px;
+.table-editor input[type=text],
+.table-editor td textarea {
+    margin: 0;
     width: 90px;
+}
+
+.table-editor td textarea {
+    height: 50px;
 }
 
 .table-editor .advanced-options {
