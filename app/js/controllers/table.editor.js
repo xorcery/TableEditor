@@ -112,8 +112,41 @@
         axis: 'y',
         cursor: "move",
         handle: ".handle",
-        update: function (ev, ui) {
+        cancel: '.no-drag',
+        containment: 'parent',
+        placeholder: 'sortable-placeholder',
+        forcePlaceholderSize: true,
+        items: '> tr:not(.unsortable)',
+        tolerance: 'pointer',
+        helper: function (e, ui) {
+            // When sorting table rows, the cells collapse. This helper fixes that: http://www.foliotek.com/devblog/make-table-rows-sortable-using-jquery-ui-sortable/
+            ui.children().each(function () {
+                //$(this).height($(this).height());
+                $(this).width($(this).width());
+            });
+            return ui;
+        },
+        start: function (e, ui) {
+            //ui.placeholder.html("<td colspan='5'></td>");
 
+            // Build a placeholder cell that spans all the cells in the row: http://stackoverflow.com/questions/25845310/jquery-ui-sortable-and-table-cell-size
+            var cellCount = 0;
+            $('td, th', ui.helper).each(function () {
+                // For each td or th try and get it's colspan attribute, and add that or 1 to the total
+                var colspan = 1;
+                var colspanAttr = $(this).attr('colspan');
+                if (colspanAttr > 1) {
+                    colspan = colspanAttr;
+                }
+                cellCount += colspan;
+            });
+
+            // Add the placeholder UI - note that this is the item's content, so td rather than tr - and set height of tr
+            ui.placeholder.html('<td colspan="' + cellCount + '"></td>').height(ui.item.height());
+        },
+        update: function (ev, ui) {
+            //highlight the item when the position is changed
+            $(ui.item).effect("highlight", { color: "#2e8aea" }, 500);
         },
         stop: function (ev, ui) {
 
@@ -157,8 +190,9 @@
 
     var linker = function (scope, element, attrs) {
 
-        var $rowControls = jQuery(element).find("td.row-buttons-td div");
-        var $rowStyle = jQuery(element).find("td.row-style");
+        var $elem = jQuery(element);
+        var $rowControls = $elem.find("td.row-buttons-td div");
+        var $rowStyle = $elem.find("td.row-style");
         var selectActive = false;
 
         $rowStyle.find("select").focus(function () {
