@@ -29,6 +29,7 @@
     $scope.model.config.tableStyles = parseStyleConfig($scope.model.config.tableStyles);
     $scope.model.config.columnStyles = parseStyleConfig($scope.model.config.columnStyles);
     $scope.model.config.rowStyles = parseStyleConfig($scope.model.config.rowStyles);
+    $scope.model.config.multiLineInputs = $scope.model.config.multiLineInputs === "1" ? true : false;
  
     //console.log($scope.model.value);
 
