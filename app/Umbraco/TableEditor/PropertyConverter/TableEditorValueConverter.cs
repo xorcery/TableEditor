@@ -4,27 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Umbraco.Core;
-using Umbraco.Web;
-using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.PropertyEditors;
-using Umbraco.Core.Logging;
 using TableEditor.Models;
 using TableEditor.Extensions;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Core.PropertyEditors;
+using Umbraco.Web.Composing;
 
 namespace TableEditor.PropertyConverter
 {
-    [PropertyValueType(typeof(TableEditorModel))]
-    [PropertyValueCache(PropertyCacheValue.All, PropertyCacheLevel.Content)]
     public class TableEditorValueConverter : PropertyValueConverterBase
     {
         public override bool IsConverter(PublishedPropertyType propertyType)
         {
-            return propertyType.PropertyEditorAlias.Equals("Imulus.TableEditor");
+            return propertyType.EditorAlias.Equals("Imulus.TableEditor");
         }
 
-        public override object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
+        public override PropertyCacheLevel GetPropertyCacheLevel(PublishedPropertyType propertyType)
         {
+            return PropertyCacheLevel.Element;
+        }
+
+        public override Type GetPropertyValueType(PublishedPropertyType propertyType)
+        {
+            return typeof(TableEditorModel);
+        }
+
+        public override object ConvertSourceToIntermediate(IPublishedElement owner, PublishedPropertyType propertyType,
+            object source, bool preview)
+        {
+
             if (source == null)
             {
                 return new TableEditorModel();
@@ -42,12 +50,13 @@ namespace TableEditor.PropertyConverter
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Error<TableEditorModel>(ex.Message, ex);
+                    Current.Logger.Error( typeof(TableEditorModel),ex, ex.Message + "{1}", source.ToString());
                     return new TableEditorModel();
                 }
             }
 
             return sourceString;
         }
+
     }
 }
