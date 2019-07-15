@@ -14,22 +14,23 @@ namespace TableEditor.PropertyConverter
 {
     public class TableEditorValueConverter : PropertyValueConverterBase
     {
-        public override bool IsConverter(PublishedPropertyType propertyType)
+        
+        public override bool IsConverter(IPublishedPropertyType propertyType)
         {
             return propertyType.EditorAlias.Equals("Imulus.TableEditor");
         }
 
-        public override PropertyCacheLevel GetPropertyCacheLevel(PublishedPropertyType propertyType)
+        public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType)
         {
             return PropertyCacheLevel.Element;
         }
 
-        public override Type GetPropertyValueType(PublishedPropertyType propertyType)
+        public override Type GetPropertyValueType(IPublishedPropertyType propertyType)
         {
             return typeof(TableEditorModel);
         }
 
-        public override object ConvertSourceToIntermediate(IPublishedElement owner, PublishedPropertyType propertyType,
+        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType,
             object source, bool preview)
         {
 
